@@ -1,0 +1,51 @@
+<div class="container">
+    <h1>Arma tu PC</h1>
+  
+    <div class="components">
+      <div class="component">
+        <label for="ramSize">Tamaño de la RAM:</label>
+        <select id="ramSize" [(ngModel)]="ramSize" (change)="onRAMChange($event)">
+          <option *ngFor="let option of ramOptions" [value]="option.value">{{ option.label }}</option>
+        </select>
+      </div>
+  
+      <div class="component">
+        <label for="processorType">Tipo de procesador:</label>
+        <select id="processorType" [(ngModel)]="processorType" (change)="onProcessorChange($event)">
+          <option *ngFor="let option of processorOptions" [value]="option.value">{{ option.label }}</option>
+        </select>
+      </div>
+  
+      <div class="component">
+        <label for="graphicsCard">Tarjeta Gráfica:</label>
+        <select id="graphicsCard" [(ngModel)]="graphicsCard" (change)="onGraphicsCardChange($event)">
+          <option *ngFor="let option of graphicsCardOptions" [value]="option.value">{{ option.label }}</option>
+        </select>
+      </div>
+  
+      <div class="component">
+        <label for="hardDriveType">Discos Duros:</label>
+        <select id="hardDriveType" [(ngModel)]="hardDriveType" (change)="onHardDriveChange($event)">
+          <option *ngFor="let option of hardDriveTypeOptions" [value]="option.value">{{ option.label }}</option>
+        </select>
+      </div>
+  
+      <div class="component">
+        <label for="powerSupply">Fuentes de Alimentación:</label>
+        <select id="powerSupply" [(ngModel)]="powerSupply" (change)="onPowerSupplyChange($event)">
+          <option *ngFor="let option of powerSupplyOptions" [value]="option.value">{{ option.label }}</option>
+        </select>
+      </div>
+    </div>
+  
+    <button (click)="toggleInformation()">Mostrar Información</button>
+  
+    <div class="info" *ngIf="toggleInfo">
+      <h2>Información de tu PC</h2>
+      <p>Tamaño de la RAM: <b>{{ selectedRAM }}</b></p>
+      <p>Tipo de procesador: <b>{{ selectedProcessor }}</b></p>
+      <p>Tarjeta Gráfica: <b>{{ selectedGraphicsCard }}</b></p>
+      <p>Discos Duros: <b>{{ selectedHardDrive }}</b></p>
+      <p>Fuentes de Alimentación: <b>{{ selectedPowerSupply }}</b></p>
+    </div>
+  </div>

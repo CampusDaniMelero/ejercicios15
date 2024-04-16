@@ -1,0 +1,58 @@
+<div class="container">
+    <h1>Reserva de Vuelos</h1>
+  
+    <div class="form-group">
+      <label for="origin">Origen:</label>
+      <input type="text" class="form-control" id="origin" [(ngModel)]="origin">
+    </div>
+  
+    <div class="form-group">
+        <label for="destinations">Destinos:</label>
+        <select class="form-control" id="destinations" multiple [(ngModel)]="selectedDestinations">
+          <optgroup label="Región">
+            <option *ngFor="let region of destinations" [value]="region.name">
+              {{region.name}}  </option>
+          </optgroup>
+      
+          <optgroup *ngFor="let region of destinations; let i = index">
+            <option *ngFor="let destination of region.destinations" [value]="destination.name">
+              {{destination.name}}  </option>
+          </optgroup>
+        </select>
+      </div>
+  
+    <div class="form-group">
+      <label for="departureDate">Fecha de ida:</label>
+      <input type="date" class="form-control" id="departureDate" [(ngModel)]="departureDate">
+    </div>
+  
+    <div class="form-group">
+      <label for="returnDate">Fecha de vuelta:</label>
+      <input type="date" class="form-control" id="returnDate" [(ngModel)]="returnDate">
+    </div>
+  
+    <div class="form-group">
+      <label for="numberOfPassengers">Número de pasajeros:</label>
+      <input type="number" class="form-control" id="numberOfPassengers" [(ngModel)]="numberOfPassengers">
+    </div>
+  
+    <button class="btn btn-primary" (click)="showInformation()">Mostrar información</button>
+  </div>
+
+  <div class="modal-overlay" *ngIf="showModal">
+    <div class="modal">
+      <div class="modal-content">
+        <h2>Información de la reserva de vuelo</h2>
+        <p>Origen: <b>{{ flightReservationInfo?.origin }}</b></p>
+        <p>Destinos seleccionados: <b>{{ flightReservationInfo?.selectedDestinations?.join(', ') }}</b></p>
+        <p>Fecha de ida: <b>{{ flightReservationInfo?.departureDate }}</b></p>
+        <p>Fecha de vuelta: <b>{{ flightReservationInfo?.returnDate }}</b></p>
+        <p>Número de pasajeros: <b>{{ flightReservationInfo?.numberOfPassengers }}</b></p>
+        <button class="btn btn-secondary" (click)="closeModal()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+
+  
+  

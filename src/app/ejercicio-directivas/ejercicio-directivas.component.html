@@ -1,0 +1,46 @@
+<h1>Información de Usuario</h1>
+
+<form>
+  <h2>Género</h2>
+  <div>
+    <input type="radio" name="gender" id="male" value="male" [(ngModel)]="user.gender">
+    <label for="male">Masculino</label>
+  </div>
+  <div>
+    <input type="radio" name="gender" id="female" value="female" [(ngModel)]="user.gender">
+    <label for="female">Femenino</label>
+  </div>
+
+  <h2>Nacionalidad</h2>
+  <select [(ngModel)]="user.nationality">
+    <option value="">Seleccionar...</option>
+    <option *ngFor="let nationality of nationalities" [selected]="nationality === 'Española'" value="{{ nationality }}">{{ nationality }}</option>
+  </select><select [(ngModel)]="user.nationality">
+  <option value="">Seleccionar...</option>
+  <option *ngFor="let nationality of nationalities" [selected]="nationality === 'Española'" value="{{ nationality }}">{{ nationality }}</option>
+</select>
+
+  <h2>Lenguajes de Programación</h2>
+  <div>
+    <input type="checkbox" name="programmingLanguage" id="javascript" value="JavaScript" [(ngModel)]="user.programmingLanguages">
+    <label for="javascript">JavaScript</label>
+  </div>
+  <div>
+    <input type="checkbox" name="programmingLanguage" id="typescript" value="TypeScript" [(ngModel)]="user.programmingLanguages">
+    <label for="typescript">TypeScript</label>
+  </div>
+  <div>
+    <input type="checkbox" name="programmingLanguage" id="python" value="Python" [(ngModel)]="user.programmingLanguages">
+    <label for="python">Python</label>
+  </div>
+  <div>
+    <input type="checkbox" name="programmingLanguage" id="java" value="Java" [(ngModel)]="user.programmingLanguages">
+    <label for="java">Java</label>
+  </div>
+  <div>
+    <input type="checkbox" name="programmingLanguage" id="cpp" value="C++" [(ngModel)]="user.programmingLanguages">
+    <label for="cpp">C++</label>
+  </div>
+
+  <button type="button" (click)="showInformation()">Mostrar Información</button>
+</form>
